@@ -10,32 +10,22 @@ const refs = {
   searchBox: document.querySelector('#search-box'),
 };
 
-// refs.searchBox.addEventListener('input', onSearch);
+refs.searchBox.addEventListener('input', onSearch);
 
-// function onSearch() {
-// function fetchCountries(name) {
-//   // const options = {};
-//   return fetch(`https://restcountries.com/v3.1/name/{name}`).then(response => {
-//     return response.json();
-//   });
-// }
-// }
-// console.log(onSearch());
-
-refs.searchBox.addEventListener('input', () => {
+function onSearch() {
   const searchQuery = refs.searchBox.value;
-  const name = searchQuery;
   console.log(searchQuery);
-});
 
-fetchCountries('peru')
-  .then(console.log(name))
-  .catch(error => {
-    console.log(error);
-  });
+  fetchCountries(searchQuery)
+    .then(console.log(name))
+    .catch(error => {
+      console.log(error);
+    });
+}
 
 function fetchCountries(name) {
   return fetch(`https://restcountries.com/v3.1/name/${name}`).then(response => {
     return response.json();
   });
 }
+//uganda
