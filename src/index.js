@@ -4,33 +4,38 @@ import notiflix from 'notiflix';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
 const DEBOUNCE_DELAY = 300;
-const BASE_URL = 'https://restcountries.com/v3.1/name/{peru}';
+// const BASE_URL = 'https://restcountries.com/v3.1/name/{peru}';
 
 const refs = {
   searchBox: document.querySelector('#search-box'),
 };
 
+// refs.searchBox.addEventListener('input', onSearch);
+
+// function onSearch() {
+// function fetchCountries(name) {
+//   // const options = {};
+//   return fetch(`https://restcountries.com/v3.1/name/{name}`).then(response => {
+//     return response.json();
+//   });
+// }
+// }
+// console.log(onSearch());
+
 refs.searchBox.addEventListener('input', () => {
-  //   console.log(refs.searchBox.value);
   const searchQuery = refs.searchBox.value;
+  const name = searchQuery;
   console.log(searchQuery);
 });
 
-// fetchCountries(name)
-//   .then(name)
-//   .catch(error => {
-//     console.log(error);
-//   });
-
-const options = {};
-
-fetch(BASE_URL, options)
-  .then(response => {
-    return response.json();
-  })
-  .then(name => {
-    console.log(name);
-  })
+fetchCountries('peru')
+  .then(console.log(name))
   .catch(error => {
-    console.log('error');
+    console.log(error);
   });
+
+function fetchCountries(name) {
+  return fetch(`https://restcountries.com/v3.1/name/${name}`).then(response => {
+    return response.json();
+  });
+}
